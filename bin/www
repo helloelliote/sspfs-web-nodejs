@@ -3,11 +3,11 @@
 /**
  * Module dependencies.
  */
+import app from "../app";
+import debug0 from "debug";
+import http from "http";
 
-var app = require('../app');
-var debug = require('debug')('web-nodejs:server');
-var http = require('http');
-
+var debug = debug0('web-nodejs:server');
 /**
  * Get port from environment and store in Express.
  */

@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import createError from "http-errors";
 import express, { NextFunction, Request, Response } from "express";
 import path from "path";
@@ -6,12 +7,18 @@ import logger from "morgan";
 import indexRouter from "./routes";
 import usersRouter from "./routes/users";
 
+dotenv.config();
+
 const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
+/**
+ @see Web Development with Node & Express 209쪽
+ **/
+app.enable("trust proxy");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

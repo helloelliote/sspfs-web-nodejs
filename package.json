@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www.ts"
+    "start": "node ./bin/www.ts",
+    "watch": "tsc -w"
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",
     "debug": "~4.3.4",
+    "dotenv": "^16.0.3",
     "express": "~4.18.2",
     "hbs": "~4.2.0",
     "http-errors": "~2.0.0",

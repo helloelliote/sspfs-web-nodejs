@@ -13,7 +13,7 @@ var debug = debug0("web-nodejs:server");
  * Get port from environment and store in Express.
  */
 
-var port: string | number | boolean = normalizePort(process.env.PORT || "3000");
+var port: string | number | boolean = normalizePort(process.env.PORT || "3003");
 app.set("port", port);
 
 /**

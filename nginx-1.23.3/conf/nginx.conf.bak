@@ -22,7 +22,7 @@ http {
     #                  '$status $body_bytes_sent "$http_referer" '
     #                  '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  off;
+    #access_log  logs/access.log  main;
 
     sendfile        on;
     #tcp_nopush     on;
@@ -30,35 +30,52 @@ http {
     #keepalive_timeout  0;
     keepalive_timeout  65;
 
-    gzip  on;
-	gzip_vary on;
-	gzip_min_length 1500;
-	gzip_types *;
-
-	client_max_body_size 60m;
-	charset utf-8;
-
-	upstream nodejs {
-		ip_hash;
-		server localhost:3003;
-	}
+    #gzip  on;
 
     server {
-        listen       localhost:3000;
+        listen       80;
         server_name  localhost;
 
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
         location / {
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header X-Real-IP $remote_addr;
-			proxy_set_header Host $http_host;
+            root   html;
+            index  index.html index.htm;
+        }
 
-			proxy_http_version 1.1;
-			proxy_set_header Upgrade $http_upgrade;
-			proxy_set_header Connection "upgrade";
+        #error_page  404              /404.html;
 
-            proxy_pass http://nodejs;
-			proxy_redirect off;
-		}
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
     }
 
 

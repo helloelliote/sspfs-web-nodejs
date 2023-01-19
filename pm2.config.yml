@@ -1,7 +1,7 @@
 ---
 apps:
   - name: sspfs47130
-    cwd: "./sspfs47130"
+    cwd: "./"
     script: "./app.bundle.js"
     exec_mode: cluster
     instances: 3

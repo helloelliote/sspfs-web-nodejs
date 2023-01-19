@@ -1,5 +1,5 @@
 # Ignore artifacts:
-build
+dist
 coverage
 
 **/.git
@@ -10,5 +10,3 @@ coverage
 .yarn
 .pnp.*
 .github
-
-*.js

@@ -1,0 +1,20 @@
+### GET request with a header
+GET {{host}}/ip
+Accept: application/json
+
+### GET request with parameter
+GET {{host}}/get?show_env=1
+Accept: application/json
+
+### GET request with environment variables
+GET {{host}}/get?show_env={{show_env}}
+Accept: application/json
+
+### GET request with disabled redirects
+# @no-redirect
+GET {{host}}/status/301
+
+### GET request with dynamic variables
+GET {{host}}/anything?id={{$uuid}}&ts={{$timestamp}}
+
+###

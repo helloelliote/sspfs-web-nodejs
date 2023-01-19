@@ -58,7 +58,7 @@ const config = {
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new CopyWebpackPlugin({
-      patterns: [{ from: "views", to: "views" }],
+      patterns: [{ from: "views", to: "views" }, "ecosystem.config.js"],
     }),
     {
       apply: (compiler) => {

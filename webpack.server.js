@@ -20,13 +20,11 @@ const filterProperties = new Set([
  * @see https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
  */
 const config = {
-  context: __dirname, // to automatically find tsconfig.json
   entry: {
     app: "./bin/www.ts",
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
   },
   cache: {
     type: "filesystem",
@@ -64,7 +62,7 @@ const config = {
       apply: (compiler) => {
         compiler.hooks.compile.tap("package.json", () => {
           const mergedJson = JSON.stringify(
-            _.merge(packageJson),
+            _.merge(packageJson /*packageJsonTools*/),
             (k, v) => (v == null || filterProperties.has(k) ? undefined : v),
             2
           );

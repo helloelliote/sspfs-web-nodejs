@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./app.bundle.js",
-    "devServer": "webpack --watch --mode=development --config ./webpack.server.js",
-    "prodServer": "webpack --watch --mode=production --config ./webpack.server.js",
-    "yarn": "yarn install"
+    "devServer": "webpack --mode=development --config ./webpack.server.js",
+    "prodServer": "webpack --mode=production --config ./webpack.server.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",

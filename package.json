@@ -7,7 +7,8 @@
     "devServer": "yarn webpack --mode=development --config ./webpack.server.js",
     "prodServer": "yarn webpack --mode=production --config ./webpack.server.js",
     "ncu": "ncu",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "stress": "artillery run ./.artilleryrc.yml"
   },
   "dependencies": {
     "cookie-parser": "~1.4.6",

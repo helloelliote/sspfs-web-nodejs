@@ -285,6 +285,8 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,database,node,dotenv,yarn
 
+.temp/
+
 # Typescript
 *.js
 *.js.map

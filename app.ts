@@ -8,6 +8,7 @@ import helmet from "helmet";
 import cors from "cors";
 import favicon from "serve-favicon";
 import expressSession from "./middlewares/express-session";
+import sessionPersist from "./middlewares/session-persist";
 import csrf from "./middlewares/csrf";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
@@ -15,8 +16,6 @@ import apiRouter from "./routes/api";
 dotenv.config();
 
 const app: Express = express();
-
-const session = expressSession();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -35,7 +34,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session);
+app.use(expressSession());
+app.use(sessionPersist);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(csrf, (req: Request, res: Response, next: NextFunction) => next());

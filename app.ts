@@ -9,7 +9,6 @@ import passport from "passport";
 import cors from "cors";
 import favicon from "serve-favicon";
 import expressSession from "./middlewares/express-session";
-// import sessionPersist from "./middlewares/session-persist";
 import {
   doubleCsrfProtection as csrf,
   generateToken,

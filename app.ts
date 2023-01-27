@@ -10,7 +10,10 @@ import cors from "cors";
 import favicon from "serve-favicon";
 import expressSession from "./middlewares/express-session";
 // import sessionPersist from "./middlewares/session-persist";
-import csrf from "./middlewares/csrf";
+import {
+  doubleCsrfProtection as csrf,
+  generateToken,
+} from "./middlewares/csrf";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
 
@@ -34,13 +37,13 @@ app.enable("trust proxy");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(expressSession());
+app.use(cookieParser());
 app.use(csrf);
 app.use(passport.authenticate("session"));
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.locals._csrfToken = req.csrfToken();
+  res.locals._csrfToken = generateToken(res, req);
   next();
 });
 

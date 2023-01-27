@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 export default {
   home(req: Request, res: Response, next: NextFunction) {
     res.render("index", {
-      _csrfToken: res.locals.csrfToken,
+      _csrfToken: res.locals._csrfToken,
       title: "소규모공공시설 웹조회시스템",
     });
   },

@@ -40,7 +40,7 @@ app.use(expressSession());
 app.use(csrf);
 app.use(passport.authenticate("session"));
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.locals.csrfToken = req.csrfToken();
+  res.locals._csrfToken = req.csrfToken();
   next();
 });
 

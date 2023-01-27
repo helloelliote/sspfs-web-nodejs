@@ -1,37 +1,25 @@
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import express, { NextFunction, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
-import connect_pg_simple from "connect-pg-simple";
-import expressSession from "express-session";
 import helmet from "helmet";
 import cors from "cors";
-import postgresql from "./middlewares/postgresql";
+import expressSession from "./middlewares/express-session";
 import csrf from "./middlewares/csrf";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
 
 dotenv.config();
 
-const app = express();
+const app: Express = express();
+
+const session = expressSession();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-
-const postgresqlSession = connect_pg_simple(expressSession);
-const session = expressSession({
-  resave: false,
-  // @ts-ignore
-  secret: process.env.SESSION_KEY,
-  store: new postgresqlSession({
-    createTableIfMissing: true,
-    pool: postgresql,
-    schemaName: "private",
-  }),
-});
 
 app.use(helmet());
 /**

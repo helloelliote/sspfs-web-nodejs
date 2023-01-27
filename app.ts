@@ -5,10 +5,11 @@ import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
 import helmet from "helmet";
+import passport from "passport";
 import cors from "cors";
 import favicon from "serve-favicon";
 import expressSession from "./middlewares/express-session";
-import sessionPersist from "./middlewares/session-persist";
+// import sessionPersist from "./middlewares/session-persist";
 import csrf from "./middlewares/csrf";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
@@ -34,11 +35,15 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(expressSession());
-app.use(sessionPersist);
 app.use(express.static(path.join(__dirname, "public")));
+app.use(expressSession());
+app.use(csrf);
+app.use(passport.authenticate("session"));
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 
-app.use(csrf, (req: Request, res: Response, next: NextFunction) => next());
 app.use("/", indexRouter);
 app.use("/api", cors(), apiRouter);
 

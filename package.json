@@ -29,7 +29,7 @@
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.11.18",
     "@types/pg": "^8.6.6",
-    "@typescript-eslint/parser": "^5.48.2",
+    "@typescript-eslint/parser": "^5.49.0",
     "copy-webpack-plugin": "^11.0.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",

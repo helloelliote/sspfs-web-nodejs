@@ -3851,9 +3851,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^16.6.2":
-  version: 16.6.2
-  resolution: "npm-check-updates@npm:16.6.2"
+"npm-check-updates@npm:^16.6.4":
+  version: 16.6.4
+  resolution: "npm-check-updates@npm:16.6.4"
   dependencies:
     chalk: ^5.2.0
     cli-table: ^0.3.11
@@ -3887,7 +3887,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: c2e9f200335abfc8c6ef4d832eb95492ebaf17eb9610eaa7a7e3f26d5c3194dfc0f4f0694958d0d3c58787e568c7031248253ac323143bd58faa44b61e13ba34
+  checksum: 98d0130b1b8813f238fe75d6d11bd7b005c9f9728cae94ddd1194a2bf4a8d843caa423177fe97ba7be7f8ff3e2b3f350683a30193ed21f8c72e0f7b806c08d81
   languageName: node
   linkType: hard
 
@@ -5551,7 +5551,7 @@ __metadata:
     http-errors: ~2.0.0
     lodash: ^4.17.21
     morgan: ~1.10.0
-    npm-check-updates: ^16.6.2
+    npm-check-updates: ^16.6.4
     pg: ^8.8.0
     prettier: ^2.8.3
     ts-loader: ^9.4.2

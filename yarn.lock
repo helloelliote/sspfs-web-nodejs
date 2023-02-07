@@ -1831,7 +1831,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-parser@npm:^1.4.6, cookie-parser@npm:~1.4.6":
+"cookie-parser@npm:~1.4.6":
   version: 1.4.6
   resolution: "cookie-parser@npm:1.4.6"
   dependencies:
@@ -1928,13 +1928,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csrf-csrf@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "csrf-csrf@npm:2.2.2"
+"csrf-csrf@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "csrf-csrf@npm:2.2.3"
   dependencies:
-    cookie-parser: ^1.4.6
     http-errors: ^2.0.0
-  checksum: 6536fcf8d783c1fc06e93023f1c50cc4a5ac8937a86695f44b962df78aa8b784f79e59e5e3693708b552ef5eb113e8421d75e7398dbd466069503c78337b7b61
+  checksum: 9ebda69d82ab16e879f064663d2a5f210ee8222cb191b1baa98a42ad53235090949e13ea56de72d18f1cd570a5243f87f7ee2689487fbc88768bc404e90fac47
   languageName: node
   linkType: hard
 
@@ -5931,7 +5930,7 @@ __metadata:
     cookie-parser: ~1.4.6
     copy-webpack-plugin: ^11.0.0
     cors: ^2.8.5
-    csrf-csrf: ^2.2.2
+    csrf-csrf: ^2.2.3
     debug: ~4.3.4
     dotenv: ^16.0.3
     eslint: ^8.33.0

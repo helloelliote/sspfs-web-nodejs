@@ -1,10 +1,20 @@
 import express from "express";
+import user from "./user";
+import passport from "../middlewares/passport";
 
 const router = express.Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
+router.get("/", /*user.isAuthenticated,*/ user.home);
+router.get("/login", user.login);
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successReturnToOrRedirect: "/",
+    failureRedirect: "/login",
+    failureMessage: true,
+  })
+);
+router.post("/logout", user.logout);
+router.get("/signup", user.signup);
 
 export default router;

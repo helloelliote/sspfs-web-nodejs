@@ -1,12 +1,10 @@
 # Ignore artifacts:
 dist
-coverage
 
-**/.git
-**/.svn
-**/.hg
-**/node_modules
+.git
+node_modules
 
 .yarn
-.pnp.*
 .github
+
+*.hbs

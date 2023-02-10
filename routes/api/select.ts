@@ -10,6 +10,7 @@ export default {
     next: NextFunction
   ): Promise<QueryResultRow> {
     const { command, rowCount, rows }: QueryResult = await pg.query({
+      name: "api/features",
       text: "SELECT 1;",
       values: [],
     });

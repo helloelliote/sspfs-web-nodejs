@@ -2,6 +2,9 @@ import { Pool, QueryConfig } from "pg";
 
 const pool = new Pool();
 
+/**
+ * @link https://node-postgres.com/features/queries#prepared-statements
+ */
 export default {
   pool: pool,
 

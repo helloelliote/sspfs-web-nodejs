@@ -13,14 +13,8 @@ class Postgresql {
     Postgresql.instance = this;
     Postgresql.exists = true;
 
-    this.pool = new Pool({
-      database: process.env.PGDATABASE,
-      host: process.env.PGHOST,
-      password: process.env.PGPASSWORD,
-      // @ts-ignore
-      port: process.env.PGPORT,
-      user: process.env.PGUSER,
-    });
+    // @link https://node-postgres.com/features/connecting#environment-variables
+    this.pool = new Pool();
 
     return this;
   }

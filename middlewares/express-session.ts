@@ -1,7 +1,7 @@
 import connect_pg_simple from "connect-pg-simple";
 import express from "express";
 import expressSession from "express-session";
-import postgresql from "./postgresql";
+import pg from "./postgresql";
 
 export default function (): express.RequestHandler {
   const postgresqlSession = connect_pg_simple(expressSession);
@@ -12,7 +12,7 @@ export default function (): express.RequestHandler {
     secret: process.env.SESSION_KEY,
     store: new postgresqlSession({
       createTableIfMissing: true,
-      pool: postgresql,
+      pool: pg.pool,
       schemaName: "private",
     }),
   });

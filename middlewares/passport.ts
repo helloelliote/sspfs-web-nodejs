@@ -24,12 +24,12 @@ passport.use(
     callback: Function
   ) {
     postgresql
-      .query(
-        `SELECT *
-               FROM private.sys_users
-               WHERE username = $1`,
-        [username]
-      )
+      .query({
+        text: `SELECT *
+                   FROM private.sys_users
+                   WHERE username = $1`,
+        values: [username],
+      })
       .then((queryResult: QueryResult) => {
         if (queryResult.rowCount == 0) {
           return callback(null, false, {

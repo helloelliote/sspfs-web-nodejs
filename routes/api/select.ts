@@ -9,10 +9,10 @@ export default {
     res: Response,
     next: NextFunction
   ): Promise<QueryResultRow> {
-    const { command, rowCount, rows }: QueryResult = await pg.query(
-      "SELECT 1;",
-      []
-    );
+    const { command, rowCount, rows }: QueryResult = await pg.query({
+      text: "SELECT 1;",
+      values: [],
+    });
     return rows;
   },
 };

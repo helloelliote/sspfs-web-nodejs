@@ -1,23 +1,29 @@
-import { Pool } from "pg";
+import { Pool, QueryConfig } from "pg";
 
-class Postgresql {
-  private static exists: boolean;
-  private static instance: Postgresql;
-  pool!: Pool;
+const pool = new Pool();
 
-  constructor() {
-    if (Postgresql.exists) {
-      return Postgresql.instance;
+export default {
+  pool: pool,
+
+  async query(queryConfig: QueryConfig) {
+    return await pool.query(queryConfig);
+  },
+
+  async transaction(queryConfigs: QueryConfig[]) {
+    const client = await pool.connect();
+    try {
+      const result = [];
+      await client.query("BEGIN");
+      for (const queryConfig of queryConfigs) {
+        result.push(await client.query(queryConfig));
+      }
+      await client.query("COMMIT");
+      return result;
+    } catch (e) {
+      await client.query("ROLLBACK");
+      throw e;
+    } finally {
+      client.release();
     }
-
-    Postgresql.instance = this;
-    Postgresql.exists = true;
-
-    // @link https://node-postgres.com/features/connecting#environment-variables
-    this.pool = new Pool();
-
-    return this;
-  }
-}
-
-export default new Postgresql().pool;
+  },
+};

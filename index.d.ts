@@ -1,6 +1,3 @@
-// noinspection ES6UnusedImports
-import { SessionData } from "express-session";
-
 declare module "*.svg" {
   const content: any;
   export default content;

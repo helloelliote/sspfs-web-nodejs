@@ -21,6 +21,7 @@ export default {
     return function (req: Request, res: Response, next: NextFunction) {
       if (!req.isAuthenticated || !req.isAuthenticated()) {
         if (setReturnTo && req.session) {
+          // @ts-ignore
           req.session.returnTo = req.originalUrl || req.url;
         }
         return res.redirect(url);

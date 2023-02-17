@@ -72,19 +72,14 @@ passport.use(
  * fetch records and render the user element in the navigation bar, that
  * information is stored in the session.
  */
-passport.serializeUser(function (user: any, callback: Function): void {
-  process.nextTick(function () {
+passport.serializeUser((user: any, callback: Function): void => {
+  process.nextTick(() => {
     callback(null, { id: user.id, username: user.username });
   });
 });
 
-passport.deserializeUser(function (
-  user: Express.User,
-  callback: Function
-): void {
-  process.nextTick(function () {
-    return callback(null, user);
-  });
+passport.deserializeUser((user: Express.User, callback: Function): void => {
+  process.nextTick(() => callback(null, user));
 });
 
 export default passport;

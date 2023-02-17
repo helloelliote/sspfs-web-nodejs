@@ -18,7 +18,7 @@ export default {
     const setReturnTo =
       options.setReturnTo === undefined ? true : options.setReturnTo;
 
-    return function (req: Request, res: Response, next: NextFunction) {
+    return (req: Request, res: Response, next: NextFunction) => {
       if (!req.isAuthenticated || !req.isAuthenticated()) {
         if (setReturnTo && req.session) {
           // @ts-ignore
@@ -35,7 +35,7 @@ export default {
   },
 
   logout(req: Request, res: Response, next: NextFunction) {
-    req.logout(function (err) {
+    req.logout((err: any) => {
       if (err) {
         return next(err);
       }

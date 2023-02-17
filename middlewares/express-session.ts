@@ -3,7 +3,7 @@ import express from "express";
 import expressSession from "express-session";
 import pg from "./postgresql";
 
-export default function (): express.RequestHandler {
+export default (): express.RequestHandler => {
   const postgresqlSession = connect_pg_simple(expressSession);
   return expressSession({
     resave: false,
@@ -16,4 +16,4 @@ export default function (): express.RequestHandler {
       schemaName: "private",
     }),
   });
-}
+};

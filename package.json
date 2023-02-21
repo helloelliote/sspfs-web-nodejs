@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "start": "yarn node ./app.bundle.js",
-    "devServer": "yarn webpack --mode=development --config ./webpack.server.js",
-    "prodServer": "yarn webpack --mode=production --config ./webpack.server.js",
+    "devServer": "yarn webpack --watch --mode=development --config ./webpack.server.js",
+    "prodServer": "yarn webpack --watch --mode=production --config ./webpack.server.js",
     "ncu": "ncu",
     "prettier": "prettier --write .",
     "stress": "artillery run ./.artilleryrc.yml",
     "yarn": "yarn install"
   },
   "dependencies": {
+    "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
     "bcrypt": "^5.1.0",
     "connect-pg-simple": "^8.0.0",
     "cookie-parser": "~1.4.6",
@@ -21,6 +22,7 @@
     "dotenv": "^16.0.3",
     "express": "~4.18.2",
     "express-session": "^1.17.3",
+    "graphql": "^16.6.0",
     "hbs": "~4.2.0",
     "helmet": "^6.0.1",
     "http-errors": "~2.0.0",
@@ -29,6 +31,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "pg": "^8.8.0",
+    "postgraphile": "^4.13.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

@@ -15,6 +15,7 @@ import {
 } from "./middlewares/csrf";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
+import graphql from "./middlewares/graphql";
 
 dotenv.config();
 
@@ -39,6 +40,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(expressSession());
 app.use(cookieParser());
+
+app.use("/api", cors(), apiRouter);
+app.use(graphql);
+
 app.use(csrf);
 app.use(passport.authenticate("session"));
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -47,7 +52,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/", indexRouter);
-app.use("/api", cors(), apiRouter);
 
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 

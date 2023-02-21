@@ -290,3 +290,6 @@ dist
 # Typescript
 *.js
 *.js.map
+
+# GraphQL
+*.graphql

@@ -16,7 +16,7 @@ ALTER TABLE b_risk_evaluation
     ADD PRIMARY KEY (fac_uid);
 
 ALTER TABLE b_risk_evaluation
-    ADD CONSTRAINT b_risk_evaluation_a_facility_fac_uid_fk
+    ADD CONSTRAINT b_risk_evaluation_b_facility_fac_uid_fk
         FOREIGN KEY (fac_uid) REFERENCES b_facility;
 
 CREATE INDEX b_risk_evaluation_evm_ymd_index

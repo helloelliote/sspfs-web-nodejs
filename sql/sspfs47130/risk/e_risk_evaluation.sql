@@ -1,26 +1,47 @@
 -- auto-generated definition
-CREATE TABLE e_risk_evaluation AS
-SELECT fac_uid
-FROM e_facility;
-
-ALTER TABLE e_risk_evaluation
-    ADD eva_ymd timestamp;
-
-ALTER TABLE e_risk_evaluation
-    ADD eva_nam text;
-
-ALTER TABLE e_risk_evaluation
-    ADD eva_chk selection DEFAULT '0'::selection;
-
-ALTER TABLE e_risk_evaluation
-    ADD PRIMARY KEY (fac_uid);
-
-ALTER TABLE e_risk_evaluation
-    ADD CONSTRAINT e_risk_evaluation_e_facility_fac_uid_fk
-        FOREIGN KEY (fac_uid) REFERENCES e_facility;
-
-CREATE INDEX e_risk_evaluation_evm_ymd_index
-    ON e_risk_evaluation USING brin (eva_ymd);
+CREATE TABLE e_risk_evaluation
+(
+    fac_uid    text                NOT NULL
+        PRIMARY KEY
+        CONSTRAINT e_risk_evaluation_e_facility_fac_uid_fk
+            REFERENCES e_facility,
+    column_1u  integer   DEFAULT 5 NOT NULL,
+    column_1m  integer   DEFAULT 5 NOT NULL,
+    column_1l  integer   DEFAULT 5 NOT NULL,
+    column_2u  integer   DEFAULT 5 NOT NULL,
+    column_2m  integer   DEFAULT 5 NOT NULL,
+    column_2l  integer   DEFAULT 5 NOT NULL,
+    column_3u  integer   DEFAULT 5 NOT NULL,
+    column_3m  integer   DEFAULT 5 NOT NULL,
+    column_3l  integer   DEFAULT 5 NOT NULL,
+    column_4u  integer   DEFAULT 5 NOT NULL,
+    column_4m  integer   DEFAULT 5 NOT NULL,
+    column_4l  integer   DEFAULT 5 NOT NULL,
+    column_5u  integer   DEFAULT 5 NOT NULL,
+    column_5m  integer   DEFAULT 5 NOT NULL,
+    column_5l  integer   DEFAULT 5 NOT NULL,
+    column_6u  integer   DEFAULT 5 NOT NULL,
+    column_6m  integer   DEFAULT 5 NOT NULL,
+    column_6l  integer   DEFAULT 5 NOT NULL,
+    column_7u  integer   DEFAULT 5 NOT NULL,
+    column_7m  integer   DEFAULT 5 NOT NULL,
+    column_7l  integer   DEFAULT 5 NOT NULL,
+    column_8u  integer   DEFAULT 5 NOT NULL,
+    column_8m  integer   DEFAULT 5 NOT NULL,
+    column_8l  integer   DEFAULT 5 NOT NULL,
+    column_9u  integer   DEFAULT 5 NOT NULL,
+    column_9m  integer   DEFAULT 5 NOT NULL,
+    column_9l  integer   DEFAULT 5 NOT NULL,
+    column_10u integer   DEFAULT 5 NOT NULL,
+    column_10m integer   DEFAULT 5 NOT NULL,
+    column_10l integer   DEFAULT 5 NOT NULL,
+    eva_ymd    timestamp,
+    eva_nam    text,
+    eva_chk    selection DEFAULT '0'::selection
+);
 
 ALTER TABLE e_risk_evaluation
     OWNER TO postgres;
+
+CREATE INDEX e_risk_evaluation_evm_ymd_index
+    ON e_risk_evaluation USING brin (eva_ymd);

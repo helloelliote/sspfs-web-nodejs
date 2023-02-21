@@ -1,26 +1,27 @@
 -- auto-generated definition
-CREATE TABLE c_risk_evaluation AS
-SELECT fac_uid
-FROM c_facility;
-
-ALTER TABLE c_risk_evaluation
-    ADD eva_ymd timestamp;
-
-ALTER TABLE c_risk_evaluation
-    ADD eva_nam text;
-
-ALTER TABLE c_risk_evaluation
-    ADD eva_chk selection DEFAULT '0'::selection;
-
-ALTER TABLE c_risk_evaluation
-    ADD PRIMARY KEY (fac_uid);
-
-ALTER TABLE c_risk_evaluation
-    ADD CONSTRAINT c_risk_evaluation_c_facility_fac_uid_fk
-        FOREIGN KEY (fac_uid) REFERENCES c_facility;
-
-CREATE INDEX c_risk_evaluation_evm_ymd_index
-    ON c_risk_evaluation USING brin (eva_ymd);
+CREATE TABLE c_risk_evaluation
+(
+    fac_uid   text                NOT NULL
+        PRIMARY KEY
+        CONSTRAINT c_risk_evaluation_c_facility_fac_uid_fk
+            REFERENCES c_facility,
+    column_1  integer   DEFAULT 5 NOT NULL,
+    column_2  integer   DEFAULT 5 NOT NULL,
+    column_3  integer   DEFAULT 5 NOT NULL,
+    column_4  integer   DEFAULT 5 NOT NULL,
+    column_5  integer   DEFAULT 5 NOT NULL,
+    column_6  integer   DEFAULT 5 NOT NULL,
+    column_7  integer   DEFAULT 5 NOT NULL,
+    column_8  integer   DEFAULT 5 NOT NULL,
+    column_9  integer   DEFAULT 5 NOT NULL,
+    column_10 integer   DEFAULT 5 NOT NULL,
+    eva_ymd   timestamp,
+    eva_nam   text,
+    eva_chk   selection DEFAULT '0'::selection
+);
 
 ALTER TABLE c_risk_evaluation
     OWNER TO postgres;
+
+CREATE INDEX c_risk_evaluation_evm_ymd_index
+    ON c_risk_evaluation USING brin (eva_ymd);

@@ -6280,6 +6280,7 @@ __metadata:
     express: ~4.18.2
     express-session: ^1.17.3
     fork-ts-checker-webpack-plugin: ^7.3.0
+    graphile-utils: ^4.13.0
     graphql: ^16.6.0
     hbs: ~4.2.0
     helmet: ^6.0.1

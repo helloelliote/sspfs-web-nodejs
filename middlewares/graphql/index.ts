@@ -4,6 +4,7 @@ import {
   PostGraphileOptions,
 } from "postgraphile";
 import PgSimplifyInflectorPlugin from "@graphile-contrib/pg-simplify-inflector";
+// import extendSchemaPlugin from "./plugins";
 import postgresql from "../postgresql";
 
 const optionsDev: PostGraphileOptions = {
@@ -19,7 +20,7 @@ const optionsDev: PostGraphileOptions = {
  * @link https://www.graphile.org/postgraphile/usage-library/#for-production
  */
 const options: PostGraphileOptions = {
-  appendPlugins: [PgSimplifyInflectorPlugin],
+  appendPlugins: [PgSimplifyInflectorPlugin /*extendSchemaPlugin*/],
   disableQueryLog: true,
   dynamicJson: true,
   enableQueryBatching: true,
@@ -29,6 +30,7 @@ const options: PostGraphileOptions = {
   legacyRelations: "omit",
   retryOnInitFail: true,
   setofFunctionsContainNulls: false,
+  showErrorStack: false,
   simpleCollections: "omit",
   subscriptions: true,
 };

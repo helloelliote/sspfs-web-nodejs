@@ -1,10 +1,10 @@
+import { RequestHandler } from "express";
 import connect_pg_simple from "connect-pg-simple";
-import express from "express";
 import expressSession from "express-session";
 import pg from "./postgresql";
 
-export default (): express.RequestHandler => {
-  const postgresqlSession = connect_pg_simple(expressSession);
+const postgresqlSession = connect_pg_simple(expressSession);
+export default function (): RequestHandler {
   return expressSession({
     resave: false,
     saveUninitialized: false,
@@ -16,4 +16,4 @@ export default (): express.RequestHandler => {
       schemaName: "private",
     }),
   });
-};
+}

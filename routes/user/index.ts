@@ -34,7 +34,7 @@ export default {
   },
 
   logout(req: Request, res: Response, next: NextFunction) {
-    req.logout((err: any) => {
+    req.logout((err: unknown) => {
       if (err) {
         return next(err);
       }

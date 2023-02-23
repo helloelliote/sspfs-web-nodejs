@@ -2,7 +2,7 @@ import { Router } from "express";
 import user from "./user";
 import passport from "../middlewares/passport";
 
-const router = Router();
+const router: Router = Router();
 
 router.get("/", /*user.isAuthenticated,*/ user.home);
 router.get("/login", user.login);

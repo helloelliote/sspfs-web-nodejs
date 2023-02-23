@@ -1,5 +1,7 @@
-import helmet from "helmet";
+import helmet, { HelmetOptions } from "helmet";
 
-export default helmet({
+const helmetOptions: HelmetOptions = {
   crossOriginEmbedderPolicy: false,
-});
+};
+
+export default helmet(helmetOptions);

@@ -18,43 +18,41 @@ import postgresql from "./postgresql";
 // language=PostgreSQL
 passport.use(
   // @ts-ignore
-  new LocalStrategy(function verify(
-    username: string,
-    password: string,
-    callback: Function
-  ) {
-    postgresql
-      .query({
-        text: `SELECT *
-                   FROM private.sys_users
-                   WHERE username = $1`,
-        values: [username],
-      })
-      .then((queryResult: QueryResult) => {
-        if (queryResult.rowCount == 0) {
-          return callback(null, false, {
-            message: "",
-          });
-        }
-
-        const row = queryResult.rows[0];
-
-        bcrypt.compare(
-          password,
-          row["hashed"],
-          (err: Error | undefined, result: boolean) => {
-            if (err) return callback(err);
-            if (!result) {
-              return callback(null, false, {
-                message: "",
-              });
-            }
-            return callback(null, row);
+  new LocalStrategy(
+    (username: string, password: string, callback: Function) => {
+      postgresql
+        .query({
+          text: `SELECT *
+                       FROM private.sys_users
+                       WHERE username = $1`,
+          values: [username],
+        })
+        .then((queryResult: QueryResult) => {
+          if (queryResult.rowCount == 0) {
+            return callback(null, false, {
+              message: "",
+            });
           }
-        );
-      })
-      .catch((err: Error) => callback(err));
-  })
+
+          const row: any = queryResult.rows[0];
+
+          bcrypt.compare(
+            password,
+            row["hashed"],
+            (err: Error | undefined, same: boolean) => {
+              if (err) return callback(err);
+              if (!same) {
+                return callback(null, false, {
+                  message: "",
+                });
+              }
+              return callback(null, row);
+            }
+          );
+        })
+        .catch((err: Error) => callback(err));
+    }
+  )
 );
 
 /* Configure session management.

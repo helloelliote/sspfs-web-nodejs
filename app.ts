@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express, { Express } from "express";
+import { engine } from "express-handlebars";
 import { join } from "path";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
@@ -13,8 +14,9 @@ dotenv.config();
 
 const app: Express = express();
 
-app.set("views", join(__dirname, "views"));
+app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
+app.set("views", join(__dirname, "views"));
 
 app.use(helmet);
 app.enable("trust proxy");

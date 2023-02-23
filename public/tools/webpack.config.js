@@ -39,7 +39,7 @@ let demo = getDemos(rootPath)[0] || "demo31";
 // under demo paths
 const demoPath = rootPath + (demo ? "/" + demo : "");
 const distPath = demoPath + "/dist";
-const assetDistPath = distPath + "/assets";
+const assetDistPath = path.resolve(rootPath, "..", "dist", "public", "assets");
 const srcPath = demoPath + "/src";
 
 if (dev) {
@@ -203,9 +203,9 @@ function mainConfig() {
     // console logs output, https://webpack.js.org/configuration/stats/
     stats: "errors-warnings",
     /*ignoreWarnings: [{
-                module: /esri-leaflet/,
-                message: /version/,
-            }],*/
+                    module: /esri-leaflet/,
+                    message: /version/,
+                }],*/
     performance: {
       // disable warnings hint
       hints: false,

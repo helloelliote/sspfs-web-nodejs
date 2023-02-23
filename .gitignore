@@ -278,9 +278,18 @@ dist
 
 # if you are NOT using Zero-installs, then:
 # comment the following lines
-!.yarn/cache
+#!.yarn/cache
 
 # and uncomment the following lines
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,database,node,dotenv,yarn
+
+.temp/
+
+# Typescript
+*.js
+*.js.map
+
+# GraphQL
+*.graphql

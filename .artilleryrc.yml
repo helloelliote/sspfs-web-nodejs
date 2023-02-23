@@ -1,0 +1,11 @@
+config:
+  target: "http://localhost:3003"
+  phases:
+    - duration: 1
+      arrivalRate: 100
+      maxVusers: 10
+
+scenarios:
+  - flow:
+      - get:
+          url: "/"

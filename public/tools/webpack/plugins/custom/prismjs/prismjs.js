@@ -12,4 +12,4 @@ require("prismjs/components/prism-php-extras.js");
 require("prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js");
 require("@/src/js/vendors/plugins/prism.init.js");
 
-require('./prismjs.scss');
+require("./prismjs.scss");

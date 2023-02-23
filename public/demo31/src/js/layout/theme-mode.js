@@ -1,171 +1,192 @@
 "use strict";
 
 // Class definition
-var KTThemeMode = function () {
-	var menu;
-	var callbacks = [];
-	var the = this;
+var KTThemeMode = (function () {
+  var menu;
+  var callbacks = [];
+  var the = this;
 
-    var getMode = function() {
-		var mode;
+  var getMode = function () {
+    var mode;
 
-		if ( document.documentElement.hasAttribute("data-bs-theme") ) {
-            return document.documentElement.getAttribute("data-bs-theme");
-        } else if ( localStorage.getItem("data-bs-theme") !== null ) {
-			return localStorage.getItem("data-bs-theme");
-		} else if ( getMenuMode() === "system" ) {
-			return getSystemMode();
-		}
-
-        return "light";
+    if (document.documentElement.hasAttribute("data-bs-theme")) {
+      return document.documentElement.getAttribute("data-bs-theme");
+    } else if (localStorage.getItem("data-bs-theme") !== null) {
+      return localStorage.getItem("data-bs-theme");
+    } else if (getMenuMode() === "system") {
+      return getSystemMode();
     }
 
-    var setMode = function(mode, menuMode) {		
-		var currentMode = getMode();
+    return "light";
+  };
 
-		// Reset mode if system mode was changed
-		if ( menuMode === 'system') {
-			if ( getSystemMode() !==  mode ) {
-				mode = getSystemMode();
-			}
-		} else if (mode !== menuMode) {
-			menuMode = mode;
-		}
+  var setMode = function (mode, menuMode) {
+    var currentMode = getMode();
 
-		// Read active menu mode value
-		var activeMenuItem = menu ? menu.querySelector('[data-kt-element="mode"][data-kt-value="' + menuMode + '"]') : null;
-
-		// Enable switching state
-		document.documentElement.setAttribute("data-kt-theme-mode-switching", "true");
-		
-		// Set mode to the target document.documentElement
-		document.documentElement.setAttribute("data-bs-theme", mode);
-
-		// Disable switching state
-		setTimeout(function() {
-			document.documentElement.removeAttribute("data-kt-theme-mode-switching");
-		}, 300);
-		
-		// Store mode value in storage
-        localStorage.setItem("data-bs-theme", mode);			
-		
-		// Set active menu item
-		if ( activeMenuItem ) {
-			localStorage.setItem("data-bs-theme-mode", menuMode);
-			setActiveMenuItem(activeMenuItem);
-		}			
-
-		if (mode !== currentMode) {
-			KTEventHandler.trigger(document.documentElement, 'kt.thememode.change', the);
-		}		
+    // Reset mode if system mode was changed
+    if (menuMode === "system") {
+      if (getSystemMode() !== mode) {
+        mode = getSystemMode();
+      }
+    } else if (mode !== menuMode) {
+      menuMode = mode;
     }
 
-	var getMenuMode = function() {
-		if (!menu) {
-			return null;
-		}
+    // Read active menu mode value
+    var activeMenuItem = menu
+      ? menu.querySelector(
+          '[data-kt-element="mode"][data-kt-value="' + menuMode + '"]'
+        )
+      : null;
 
-		var menuItem = menu ? menu.querySelector('.active[data-kt-element="mode"]') : null;
+    // Enable switching state
+    document.documentElement.setAttribute(
+      "data-kt-theme-mode-switching",
+      "true"
+    );
 
-		if ( menuItem && menuItem.getAttribute('data-kt-value') ) {
-            return menuItem.getAttribute('data-kt-value');
-        } else if ( document.documentElement.hasAttribute("data-bs-theme-mode") ) {
-			return document.documentElement.getAttribute("data-bs-theme-mode")
-		} else if ( localStorage.getItem("data-bs-theme-mode") !== null ) {
-			return localStorage.getItem("data-bs-theme-mode");
-		} else {
-			return typeof defaultThemeMode !== "undefined" ? defaultThemeMode : "light";
-		}
-	}
+    // Set mode to the target document.documentElement
+    document.documentElement.setAttribute("data-bs-theme", mode);
 
-	var getSystemMode = function() {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
+    // Disable switching state
+    setTimeout(function () {
+      document.documentElement.removeAttribute("data-kt-theme-mode-switching");
+    }, 300);
+
+    // Store mode value in storage
+    localStorage.setItem("data-bs-theme", mode);
+
+    // Set active menu item
+    if (activeMenuItem) {
+      localStorage.setItem("data-bs-theme-mode", menuMode);
+      setActiveMenuItem(activeMenuItem);
     }
 
-	var initMode = function() {
-		setMode(getMode(), getMenuMode());
-		KTEventHandler.trigger(document.documentElement, 'kt.thememode.init', the);
-	}
+    if (mode !== currentMode) {
+      KTEventHandler.trigger(
+        document.documentElement,
+        "kt.thememode.change",
+        the
+      );
+    }
+  };
 
-	var getActiveMenuItem = function() {
-		return menu.querySelector('[data-kt-element="mode"][data-kt-value="' + getMenuMode() + '"]');
-	}
+  var getMenuMode = function () {
+    if (!menu) {
+      return null;
+    }
 
-	var setActiveMenuItem = function(item) {
-		var menuMode = item.getAttribute("data-kt-value");
-		
-		var activeItem = menu.querySelector('.active[data-kt-element="mode"]');
+    var menuItem = menu
+      ? menu.querySelector('.active[data-kt-element="mode"]')
+      : null;
 
-		if ( activeItem ) {
-			activeItem.classList.remove("active");
-		}
+    if (menuItem && menuItem.getAttribute("data-kt-value")) {
+      return menuItem.getAttribute("data-kt-value");
+    } else if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+      return document.documentElement.getAttribute("data-bs-theme-mode");
+    } else if (localStorage.getItem("data-bs-theme-mode") !== null) {
+      return localStorage.getItem("data-bs-theme-mode");
+    } else {
+      return typeof defaultThemeMode !== "undefined"
+        ? defaultThemeMode
+        : "light";
+    }
+  };
 
-		item.classList.add("active");
-		localStorage.setItem("data-bs-theme-mode", menuMode);
-	}
+  var getSystemMode = function () {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
 
-	var handleMenu = function() {
-		var items = [].slice.call(menu.querySelectorAll('[data-kt-element="mode"]'));
+  var initMode = function () {
+    setMode(getMode(), getMenuMode());
+    KTEventHandler.trigger(document.documentElement, "kt.thememode.init", the);
+  };
 
-        items.map(function (item) {
-            item.addEventListener("click", function(e) {
-				e.preventDefault();
+  var getActiveMenuItem = function () {
+    return menu.querySelector(
+      '[data-kt-element="mode"][data-kt-value="' + getMenuMode() + '"]'
+    );
+  };
 
-				var menuMode = item.getAttribute("data-kt-value");
-				var mode = menuMode;
+  var setActiveMenuItem = function (item) {
+    var menuMode = item.getAttribute("data-kt-value");
 
-				if ( menuMode === "system") {
-					mode = getSystemMode();
-				} 		
+    var activeItem = menu.querySelector('.active[data-kt-element="mode"]');
 
-				setMode(mode, menuMode);
-			});			     
-        });
-	}
+    if (activeItem) {
+      activeItem.classList.remove("active");
+    }
 
-    return {
-        init: function () {
-			menu = document.querySelector('[data-kt-element="theme-mode-menu"]');
+    item.classList.add("active");
+    localStorage.setItem("data-bs-theme-mode", menuMode);
+  };
 
-            initMode();
+  var handleMenu = function () {
+    var items = [].slice.call(
+      menu.querySelectorAll('[data-kt-element="mode"]')
+    );
 
-			if (menu) {
-				handleMenu();
-			}			
-        },
+    items.map(function (item) {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
 
-        getMode: function () {
-            return getMode();
-        },
+        var menuMode = item.getAttribute("data-kt-value");
+        var mode = menuMode;
 
-		getMenuMode: function() {
-			return getMenuMode();
-		},
+        if (menuMode === "system") {
+          mode = getSystemMode();
+        }
 
-		getSystemMode: function () {
-            return getSystemMode();
-        },
+        setMode(mode, menuMode);
+      });
+    });
+  };
 
-        setMode: function(mode) {
-            return setMode(mode)
-        },
+  return {
+    init: function () {
+      menu = document.querySelector('[data-kt-element="theme-mode-menu"]');
 
-		on: function(name, handler) {
-			return KTEventHandler.on(document.documentElement, name, handler);
-		},
+      initMode();
 
-		off: function(name, handlerId) {
-			return KTEventHandler.off(document.documentElement, name, handlerId);
-		}
-    };
-}();
+      if (menu) {
+        handleMenu();
+      }
+    },
+
+    getMode: function () {
+      return getMode();
+    },
+
+    getMenuMode: function () {
+      return getMenuMode();
+    },
+
+    getSystemMode: function () {
+      return getSystemMode();
+    },
+
+    setMode: function (mode) {
+      return setMode(mode);
+    },
+
+    on: function (name, handler) {
+      return KTEventHandler.on(document.documentElement, name, handler);
+    },
+
+    off: function (name, handlerId) {
+      return KTEventHandler.off(document.documentElement, name, handlerId);
+    },
+  };
+})();
 
 // Initialize app on document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTThemeMode.init();
+  KTThemeMode.init();
 });
 
 // Declare KTThemeMode for Webpack support
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = KTThemeMode;
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
+  module.exports = KTThemeMode;
 }

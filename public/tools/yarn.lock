@@ -6788,7 +6788,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:*, glob@npm:^8.0.1, glob@npm:^8.0.3":
+"glob@npm:*, glob@npm:^8.0.1, glob@npm:^8.0.3, glob@npm:^8.1.0":
   version: 8.1.0
   resolution: "glob@npm:8.1.0"
   dependencies:
@@ -8868,6 +8868,7 @@ __metadata:
     fs-extra: ^10.0.0
     fslightbox: ^3.3.0-2
     fullcalendar: ^5.8.0
+    glob: ^8.1.0
     handlebars: ^4.7.7
     imports-loader: ^1.2.0
     inputmask: ^5.0.6

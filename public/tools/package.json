@@ -142,5 +142,6 @@
     "watch": "webpack --watch",
     "localhost": "webpack serve",
     "sync": "node sync.js"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }

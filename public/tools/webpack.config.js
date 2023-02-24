@@ -208,12 +208,13 @@ function mainConfig() {
                 }],*/
     performance: {
       // disable warnings hint
-      hints: false,
+      hints: "warning", // false,
     },
     optimization: {
       minimize: args.indexOf("production") !== -1,
       // js and css minimizer
       minimizer: [new TerserJSPlugin(), new CssMinimizerPlugin()],
+      runtimeChunk: true, // NEW
     },
     entry: getEntryFiles(),
     output: {
@@ -221,6 +222,8 @@ function mainConfig() {
       path: assetDistPath,
       // output path based on the entries' filename
       filename: "[name].js",
+      clean: true, // NEW
+      pathinfo: false, // NEW
     },
     resolve: {
       alias: {
@@ -229,12 +232,13 @@ function mainConfig() {
         "@": [demoPath, corePath],
         handlebars: "handlebars/dist/handlebars.js",
       },
-      extensions: [".js", ".scss"],
+      extensions: [".js", ".scss", ".tsx", ".ts"],
       fallback: {
         util: false,
       },
+      symlinks: false, // NEW
     },
-    devtool: "source-map",
+    devtool: "eval", // "source-map"
     plugins: [
       new WebpackMessages({
         name: theme,
@@ -340,6 +344,18 @@ function mainConfig() {
       contentBase: distPath,
       compress: true,
       port: 8080,
+    },
+    target: "browserslist", // NEW
+    watchOptions: {
+      ignored: /node_modules/, // NEW
+    },
+    cache: {
+      // NEW
+      buildDependencies: {
+        // This makes all dependencies of this file - build dependencies
+        config: [__filename], // By default webpack and loaders are build dependencies
+      },
+      type: "filesystem",
     },
   };
 }

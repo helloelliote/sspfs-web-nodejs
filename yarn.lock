@@ -1478,7 +1478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.14.5, browserslist@npm:^4.21.3":
+"browserslist@npm:^4.14.5, browserslist@npm:^4.21.3, browserslist@npm:^4.21.5":
   version: 4.21.5
   resolution: "browserslist@npm:4.21.5"
   dependencies:
@@ -6308,6 +6308,7 @@ __metadata:
     "@types/serve-favicon": ^2.5.3
     "@typescript-eslint/parser": ^5.51.0
     bcrypt: ^5.1.0
+    browserslist: ^4.21.5
     connect-pg-simple: ^8.0.0
     cookie-parser: ~1.4.6
     copy-webpack-plugin: ^11.0.0

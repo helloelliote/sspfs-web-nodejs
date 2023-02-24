@@ -77,6 +77,10 @@ const config = {
   watchOptions: {
     ignored: /node_modules/,
   },
+  optimization: {
+    runtimeChunk: true,
+  },
+  target: "node18",
 };
 
 /**

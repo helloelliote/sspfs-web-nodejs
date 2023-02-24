@@ -12,7 +12,7 @@ const ExcludeAssetsPlugin = require("webpack-exclude-assets-plugin");
 const MergeIntoSingle = require("webpack-merge-and-include-globally/index");
 const RtlCssPlugin = require("rtlcss-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-const { sspfsEntries } = require("../sspfs/sspfs.config");
+const { sspfsEntries } = require("./sspfs/sspfs.config");
 
 const dev = false;
 
@@ -20,7 +20,7 @@ const dev = false;
 let rootPath = path.resolve(__dirname, "..");
 const corePath = rootPath;
 const coreSrcPath = corePath + "/src";
-const sspfsSrcPath = corePath + "/sspfs";
+const sspfsSrcPath = path.resolve(__dirname, "sspfs");
 
 // arguments/params from the line command
 const args = getParameters();
@@ -213,13 +213,12 @@ function mainConfig() {
                 }],*/
     performance: {
       // disable warnings hint
-      hints: "warning", // false,
+      hints: false,
     },
     optimization: {
       minimize: args.indexOf("production") !== -1,
       // js and css minimizer
       minimizer: [new TerserJSPlugin(), new CssMinimizerPlugin()],
-      runtimeChunk: true, // NEW
     },
     entry: getEntryFiles(),
     output: {
@@ -244,7 +243,7 @@ function mainConfig() {
       },
       symlinks: false, // NEW
     },
-    devtool: "eval", // "source-map"
+    devtool: "source-map",
     plugins: [
       new WebpackMessages({
         name: theme,

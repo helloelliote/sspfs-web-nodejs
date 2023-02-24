@@ -22,7 +22,7 @@ app.set("view engine", "hbs");
 app.set("views", join(__dirname, "views"));
 
 app.use(helmet);
-app.enable("trust proxy");
+app.set("trust proxy", true);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

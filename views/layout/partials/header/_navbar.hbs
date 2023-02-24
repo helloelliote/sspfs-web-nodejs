@@ -1,0 +1,92 @@
+<!--begin::Navbar-->
+<div class="app-navbar flex-shrink-0">
+  <!--begin::Search-->
+  <div class="app-navbar-item  align-items-stretch me-0 me-lg-3">
+    {{> partials/search/_inline}}
+  </div>
+  <!--end::Search-->
+  <!--begin::Activities-->
+  <div class="app-navbar-item ms-3 ms-md-6">
+    <!--begin::Drawer toggle-->
+    <div
+      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-35px h-md-35px"
+      id="kt_activities_toggle">
+      <i class="fonticon-calendar fs-2"></i>
+    </div>
+    <!--end::Drawer toggle-->
+  </div>
+  <!--end::Activities-->
+  <!--begin::Notifications-->
+  <div class="app-navbar-item ms-3 ms-md-6">
+    <!--begin::Menu- wrapper-->
+    <div
+      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-35px h-md-35px"
+      data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
+      data-kt-menu-placement="bottom-end">
+      <i class="fonticon-layers fs-2"></i>
+    </div>
+    {{> partials/menus/_notifications-menu}}
+    <!--end::Menu wrapper-->
+  </div>
+  <!--end::Notifications-->
+  <!--begin::My apps links-->
+  <div class="app-navbar-item ms-3 ms-md-6">
+    <!--begin::Menu wrapper-->
+    <div
+      class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-35px h-md-35px"
+      data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
+      data-kt-menu-placement="bottom-end">
+      <i class="fonticon-alarm fs-2"></i>
+      <div
+        class="badge badge-circle badge-danger position-absolute translate-middle bottom-0 ms-10 mt-10 h-15px w-15px fs-9">
+        5
+      </div>
+    </div>
+    {{> partials/menus/_my-apps-menu}}
+    <!--end::Menu wrapper-->
+  </div>
+  <!--end::My apps links-->
+  <!--begin::User menu-->
+  <div class="app-navbar-item ms-3 ms-md-6" id="kt_header_user_menu_toggle">
+    <!--begin::Menu wrapper-->
+    <div class="cursor-pointer symbol symbol-30px symbol-md-35px"
+         data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+         data-kt-menu-attach="parent"
+         data-kt-menu-placement="bottom-end">
+      <img class="symbol symbol-circle symbol-30px symbol-md-35px" src="assets/media/avatars/300-1.jpg" alt="user"/>
+    </div>
+    {{> partials/menus/_user-account-menu}}
+    <!--end::Menu wrapper-->
+  </div>
+  <!--end::User menu-->
+  <a href="#" class="btn btn-sm btn-flex btn-primary align-self-center ms-5 ms-lg-11 px-3" data-bs-toggle="modal"
+     data-bs-target="#kt_modal_invite_friends">
+    <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
+    <span class="svg-icon svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                           xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
+<rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="currentColor"/>
+<rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor"/>
+</svg>
+</span>
+    <!--end::Svg Icon-->        Invite
+  </a>
+  <!--begin::Header menu toggle-->
+  <div class="app-navbar-item d-lg-none ms-2 me-n3" title="Show header menu">
+    <div class="btn btn-icon btn-color-gray-500 btn-active-color-primary w-35px h-35px" id="kt_app_header_menu_toggle">
+      <!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
+      <span class="svg-icon svg-icon-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+<path
+  d="M13 11H3C2.4 11 2 10.6 2 10V9C2 8.4 2.4 8 3 8H13C13.6 8 14 8.4 14 9V10C14 10.6 13.6 11 13 11ZM22 5V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4V5C2 5.6 2.4 6 3 6H21C21.6 6 22 5.6 22 5Z"
+  fill="currentColor"/>
+<path opacity="0.3"
+      d="M21 16H3C2.4 16 2 15.6 2 15V14C2 13.4 2.4 13 3 13H21C21.6 13 22 13.4 22 14V15C22 15.6 21.6 16 21 16ZM14 20V19C14 18.4 13.6 18 13 18H3C2.4 18 2 18.4 2 19V20C2 20.6 2.4 21 3 21H13C13.6 21 14 20.6 14 20Z"
+      fill="currentColor"/>
+</svg>
+</span>
+      <!--end::Svg Icon-->            </div>
+  </div>
+  <!--end::Header menu toggle-->
+</div>
+<!--end::Navbar-->

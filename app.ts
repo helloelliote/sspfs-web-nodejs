@@ -14,7 +14,10 @@ dotenv.config();
 
 const app: Express = express();
 
-app.engine("hbs", engine({ extname: ".hbs" }));
+app.engine(
+  "hbs",
+  engine({ extname: ".hbs", partialsDir: join(__dirname, "views") })
+);
 app.set("view engine", "hbs");
 app.set("views", join(__dirname, "views"));
 
@@ -29,9 +32,10 @@ app.use(cookieParser());
 app.use(graphql);
 app.use(csrf.token);
 app.use(csrf.protection);
+app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/api", cors(), apiRouter);
+app.use("/api", apiRouter);
 
 app.use(favicon(join(__dirname, "public", "favicon.ico")));
 

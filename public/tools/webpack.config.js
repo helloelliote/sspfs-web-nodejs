@@ -11,6 +11,8 @@ const WebpackMessages = require("webpack-messages");
 const ExcludeAssetsPlugin = require("webpack-exclude-assets-plugin");
 const MergeIntoSingle = require("webpack-merge-and-include-globally/index");
 const RtlCssPlugin = require("rtlcss-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const { sspfsEntries } = require("../sspfs/sspfs.config");
 
 const dev = false;
 
@@ -18,6 +20,7 @@ const dev = false;
 let rootPath = path.resolve(__dirname, "..");
 const corePath = rootPath;
 const coreSrcPath = corePath + "/src";
+const sspfsSrcPath = corePath + "/sspfs";
 
 // arguments/params from the line command
 const args = getParameters();
@@ -193,6 +196,8 @@ function getEntryFiles() {
       "./" + path.relative("./", rootPath) + "/src/js/scripts.js";
   }
 
+  Object.assign(entries, sspfsEntries);
+
   return entries;
 }
 
@@ -231,6 +236,7 @@ function mainConfig() {
         $: path.join(__dirname, "node_modules/jquery/src/jquery"),
         "@": [demoPath, corePath],
         handlebars: "handlebars/dist/handlebars.js",
+        "@sspfs": sspfsSrcPath, // NEW
       },
       extensions: [".js", ".scss", ".tsx", ".ts"],
       fallback: {
@@ -251,9 +257,23 @@ function mainConfig() {
       new CopyWebpackPlugin({
         patterns: copyFolders(),
       }),
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/), // NEW
+      new ForkTsCheckerWebpackPlugin(), // NEW
     ].concat(extraPlugins),
     module: {
       rules: [
+        // NEW
+        {
+          test: /.([cm]?ts|tsx)$/,
+          use: [
+            {
+              loader: "ts-loader",
+              options: {
+                transpileOnly: true,
+              },
+            },
+          ],
+        },
         {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
@@ -365,6 +385,10 @@ function copyFolders() {
     {
       // copy media
       from: srcPath + "/media",
+      to: assetDistPath + "/media",
+    },
+    {
+      from: sspfsSrcPath + "/media",
       to: assetDistPath + "/media",
     },
     {

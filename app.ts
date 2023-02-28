@@ -2,11 +2,10 @@ import dotenv from "dotenv";
 import express, { Express } from "express";
 import { engine } from "express-handlebars";
 import { join } from "path";
-import logger from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import favicon from "serve-favicon";
-import { csrf, error, graphql, helmet, session } from "./middlewares";
+import { csrf, error, graphql, helmet, logger, session } from "./middlewares";
 import indexRouter from "./routes";
 import apiRouter from "./routes/api";
 
@@ -23,7 +22,7 @@ app.set("views", join(__dirname, "views"));
 
 app.use(helmet);
 app.set("trust proxy", true);
-app.use(logger("dev"));
+app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(join(__dirname, "public")));

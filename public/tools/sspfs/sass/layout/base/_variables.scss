@@ -16,8 +16,8 @@ $app-general-root-font-size-tablet: 12px !default;
 $app-general-root-font-size-mobile: 12px !default;
 
 // Container
-$app-container-padding-x: 30px !default;
-$app-container-padding-x-mobile: 20px !default;
+$app-container-padding-x: 0 !default;
+$app-container-padding-x-mobile: 0 !default;
 
 // Page
 $app-page-bg-color: null !default;
@@ -43,8 +43,8 @@ $app-wrapper-bg-color: null !default;
 $app-wrapper-bg-color-dark: null !default;
 
 // Content
-$app-content-padding-y: 30px !default;
-$app-content-padding-y-mobile: 20px !default;
+$app-content-padding-y: 0 !default;
+$app-content-padding-y-mobile: 0 !default;
 $app-content-padding-x: 0 !default;
 $app-content-padding-x-mobile: 0 !default;
 

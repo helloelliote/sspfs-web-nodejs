@@ -20,8 +20,8 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", join(__dirname, "views"));
 
-app.use(helmet);
 app.set("trust proxy", true);
+app.use(helmet);
 app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

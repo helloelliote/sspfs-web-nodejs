@@ -1,0 +1,67 @@
+<!--begin::Sidebar-->
+<div id="kt_app_sidebar" class="app-sidebar "
+     data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
+     data-kt-drawer-overlay="true" data-kt-drawer-width="auto" data-kt-drawer-direction="start"
+     data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle"
+>
+  <!--begin::Sidebar primary-->
+  <div class="app-sidebar-primary "
+  >
+    {{> layout/partials/sidebar/primary/__header}}
+    {{> layout/partials/sidebar/primary/__nav}}
+    {{> layout/partials/sidebar/primary/__footer}}
+  </div>
+  <!--end::Sidebar primary-->
+  <!--begin::Sidebar secondary-->
+  <div class="app-sidebar-secondary "
+  >
+    <!--begin::Sidebar menu-->
+    <div
+      id="kt_app_sidebar_secondary_wrapper"
+      class="hover-scroll-y"
+      data-kt-scroll="true"
+      data-kt-scroll-activate="{default: true, lg: true}"
+      data-kt-scroll-height="auto"
+      data-kt-scroll-dependecies="#kt_app_header"
+      data-kt-scroll-wrappers="#kt_app_content"
+      data-kt-scroll-offset="5px"
+    >
+      <!--begin::Tab content-->
+      <div class="tab-content px-5 px-lg-10">
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade show active" id="kt_app_sidebar_secondary_collections" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__collections}}
+        </div>
+        <!--end::Tab pane-->
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade" id="kt_app_sidebar_secondary_apis" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__apis}}
+        </div>
+        <!--end::Tab pane-->
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade" id="kt_app_sidebar_secondary_environment" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__environment}}
+        </div>
+        <!--end::Tab pane-->
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade" id="kt_app_sidebar_secondary_servers" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__servers}}
+        </div>
+        <!--end::Tab pane-->
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade" id="kt_app_sidebar_secondary_notifications" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__notifications}}
+        </div>
+        <!--end::Tab pane-->
+        <!--begin::Tab pane-->
+        <div class="tab-pane fade" id="kt_app_sidebar_secondary_history" role="tabpanel">
+          {{> layout/partials/sidebar/secondary/__history}}
+        </div>
+        <!--end::Tab pane-->
+      </div>
+      <!--end::Tab content-->
+    </div>
+    <!--end::Sidebar menu-->            </div>
+  <!--end::Sidebar secondary-->
+</div>
+<!--end::Sidebar-->

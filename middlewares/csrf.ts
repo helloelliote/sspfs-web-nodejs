@@ -1,13 +1,28 @@
-import { Request } from "express";
-import { doubleCsrf, DoubleCsrfUtilities } from "csrf-csrf";
+import { NextFunction, Request, Response } from "express";
+import {
+  doubleCsrf,
+  DoubleCsrfConfigOptions,
+  DoubleCsrfUtilities,
+} from "csrf-csrf";
 
-export const {
-  doubleCsrfProtection, // This is the default CSRF protection middleware.
-  generateToken, // Use this in your routes to provide a CSRF hash cookie and token.
-}: DoubleCsrfUtilities = doubleCsrf({
+const doubleCsrfConfigOptions: DoubleCsrfConfigOptions = {
   cookieName: "x-csrf-token",
-  // @ts-ignore
-  getSecret: (req: Request | undefined) => {
-    return req ? req.session.id : process.env.CSRF_SECRET;
+  getSecret: (req?: Request): string => {
+    return req ? req.session.id : (process.env.CSRF_SECRET as string);
   },
-});
+};
+
+const { doubleCsrfProtection, generateToken }: DoubleCsrfUtilities = doubleCsrf(
+  doubleCsrfConfigOptions
+);
+
+const generateCsrfToken = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
+  res.locals._csrfToken = generateToken(res, req);
+  next();
+};
+
+export default { protection: doubleCsrfProtection, token: generateCsrfToken };

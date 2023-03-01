@@ -12,12 +12,14 @@ const filterProperties = new Set([
   "devDependencies",
   "homepage",
   "license",
+  "scripts",
 ]);
 
 /**
  * @see https://webpack.js.org/guides/typescript/
  * @see https://webpack.js.org/guides/build-performance/
  * @see https://github.com/TypeStrong/fork-ts-checker-webpack-plugin
+ * @see https://github.com/TypeStrong/ts-loader#transpileonly
  */
 const config = {
   entry: {
@@ -56,7 +58,11 @@ const config = {
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new CopyWebpackPlugin({
-      patterns: [{ from: "views", to: "views" }, "pm2.config.yml"],
+      patterns: [
+        { from: "views", to: "views" },
+        { from: path.join(__dirname, "public", "favicon.ico"), to: "public" },
+        "pm2.config.yml",
+      ],
     }),
     {
       apply: (compiler) => {
@@ -77,6 +83,7 @@ const config = {
   watchOptions: {
     ignored: /node_modules/,
   },
+  target: "node18",
 };
 
 /**

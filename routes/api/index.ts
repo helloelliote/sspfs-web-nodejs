@@ -1,7 +1,7 @@
-import express from "express";
+import { Router } from "express";
 import select from "./select";
 
-const router = express.Router();
+const router: Router = Router();
 
 router.get("/features", select.features);
 

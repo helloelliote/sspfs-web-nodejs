@@ -1,19 +1,22 @@
+import { RequestHandler } from "express";
 import connect_pg_simple from "connect-pg-simple";
-import express from "express";
 import expressSession from "express-session";
-import postgresql from "./postgresql";
+import pg from "./postgresql";
 
-export default function (): express.RequestHandler {
-  const postgresqlSession = connect_pg_simple(expressSession);
-  return expressSession({
+const postgresqlSession = connect_pg_simple(expressSession);
+export default (): RequestHandler =>
+  expressSession({
+    cookie: {
+      secure: process.env.NODE_ENV == "production",
+    },
+    proxy: true,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     // @ts-ignore
     secret: process.env.SESSION_KEY,
     store: new postgresqlSession({
       createTableIfMissing: true,
-      pool: postgresql,
+      pool: pg.pool,
       schemaName: "private",
     }),
   });
-}

@@ -4,8 +4,11 @@ apps:
     cwd: "./"
     script: "./app.bundle.js"
     exec_mode: cluster
-    instances: 3
-    watch: false
+    instances: 1
+    watch:
+      - public
+      - views
+      - ./app.bundle.js
     max_memory_restart: 2G
     combine_logs: true
     error_file: "./logs/pm2-error.log"

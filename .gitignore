@@ -290,3 +290,10 @@ dist
 # Typescript
 *.js
 *.js.map
+
+# GraphQL
+*.graphql
+
+# Metronic Source Files
+!public/**/dist
+!public/**/*.js

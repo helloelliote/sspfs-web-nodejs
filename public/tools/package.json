@@ -83,6 +83,7 @@
     "moment": "^2.29.1",
     "nouislider": "^15.2.0",
     "npm": "^7.19.1",
+    "openlayers": "^4.6.5",
     "pdfmake": "^0.2.0",
     "prism-themes": "^1.7.0",
     "prismjs": "^1.24.1",

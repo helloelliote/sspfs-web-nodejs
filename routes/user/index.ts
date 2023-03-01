@@ -4,6 +4,7 @@ export default {
   home(req: Request, res: Response, next: NextFunction) {
     res.render("index_sspfs", {
       title: "소규모공공시설 웹조회시스템",
+      KAKAO_API_KEY: process.env.KAKAO_API_KEY,
     });
   },
 

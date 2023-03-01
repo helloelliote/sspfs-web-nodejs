@@ -110,6 +110,8 @@ function getEntryFiles() {
     "js/scripts.bundle": "./webpack/scripts" + (demo ? "." + demo : "") + ".js",
   };
 
+  Object.assign(entries, sspfsEntries);
+
   if (isPresets) {
     if (fs.existsSync(srcPath + "/sass/presets")) {
       presets = fs.readdirSync(srcPath + "/sass/presets");
@@ -195,8 +197,6 @@ function getEntryFiles() {
     entries["js/scripts.bundle"] =
       "./" + path.relative("./", rootPath) + "/src/js/scripts.js";
   }
-
-  Object.assign(entries, sspfsEntries);
 
   return entries;
 }

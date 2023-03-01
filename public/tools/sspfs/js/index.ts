@@ -1,3 +1,4 @@
 // noinspection JSUnusedGlobalSymbols
 
-export { default as maps } from "./maps";
+export * from "./maps/kakao";
+export * from "./maps/openlayers";

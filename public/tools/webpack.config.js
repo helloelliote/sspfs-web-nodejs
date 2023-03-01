@@ -263,15 +263,8 @@ function mainConfig() {
       rules: [
         // NEW
         {
-          test: /.([cm]?ts|tsx)$/,
-          use: [
-            {
-              loader: "ts-loader",
-              options: {
-                transpileOnly: true,
-              },
-            },
-          ],
+          test: /\.tsx?$/,
+          loader: "ts-loader",
         },
         {
           test: /\.css$/,

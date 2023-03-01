@@ -1,8 +1,5 @@
 const sspfsEntries = {
-  "js/sspfs/maps.bundle": [
-    "@sspfs/javascript/index.ts",
-    "@sspfs/stylesheet/_init.scss",
-  ],
+  "js/sspfs/maps.bundle": ["@sspfs/js/index.ts", "@sspfs/sass/_init.scss"],
 };
 
 module.exports = {

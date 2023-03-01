@@ -213,7 +213,7 @@ function mainConfig() {
                 }],*/
     performance: {
       // disable warnings hint
-      hints: false,
+      hints: "warning",
     },
     optimization: {
       minimize: args.indexOf("production") !== -1,
@@ -264,6 +264,7 @@ function mainConfig() {
         // NEW
         {
           test: /\.tsx?$/,
+          include: path.join(sspfsSrcPath, "js"),
           loader: "ts-loader",
         },
         {

@@ -4051,12 +4051,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^6.1.0, minimatch@npm:^6.1.6, minimatch@npm:^6.2.0":
+"minimatch@npm:^6.1.0, minimatch@npm:^6.1.6":
   version: 6.2.0
   resolution: "minimatch@npm:6.2.0"
   dependencies:
     brace-expansion: ^2.0.1
   checksum: 0ffb77d05bd483fcc344ba3e64a501d569e658fa6c592d94e9716ffc7925de7a8c2ac294cafa822b160bd8b2cbf7e01012917e06ffb9a85cfa9604629b3f2c04
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^7.0.1":
+  version: 7.4.1
+  resolution: "minimatch@npm:7.4.1"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: fd930530878ba08e5a57eacc0e69fbc980d4c1dfeb98c6c5eba3a05a10b1f6d8dd4ecca59442a1909107b7ef891b43c005720c1a8ed1a02db962fd0327bf9557
   languageName: node
   linkType: hard
 
@@ -4364,9 +4373,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^16.7.4":
-  version: 16.7.9
-  resolution: "npm-check-updates@npm:16.7.9"
+"npm-check-updates@npm:^16.7.10":
+  version: 16.7.10
+  resolution: "npm-check-updates@npm:16.7.10"
   dependencies:
     chalk: ^5.2.0
     cli-table: ^0.3.11
@@ -4381,9 +4390,9 @@ __metadata:
     json-parse-helpfulerror: ^1.0.3
     jsonlines: ^0.1.1
     lodash: ^4.17.21
-    minimatch: ^6.2.0
+    minimatch: ^7.0.1
     p-map: ^4.0.0
-    pacote: 15.1.0
+    pacote: 15.1.1
     parse-github-url: ^1.0.2
     progress: ^2.0.3
     prompts-ncu: ^2.5.1
@@ -4401,7 +4410,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: c6edb29999f27cb2c91e072254b327372f248f4a36da3704acd0a8cf228a5cd7904f3d6ca289dcd77ccd9b94e5bf72d4eaa095c3a477e2768b5da6044565f1c3
+  checksum: 003a1b618b486b03d1c8bc33c6546ffd78ae9b44e11af28e43ce27d3b6252f9183c135d10fa67b5a3fb271839c07bdf09f1482029fcfaa30e32e54e11ed004a5
   languageName: node
   linkType: hard
 
@@ -4633,9 +4642,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pacote@npm:15.1.0":
-  version: 15.1.0
-  resolution: "pacote@npm:15.1.0"
+"pacote@npm:15.1.1":
+  version: 15.1.1
+  resolution: "pacote@npm:15.1.1"
   dependencies:
     "@npmcli/git": ^4.0.0
     "@npmcli/installed-package-contents": ^2.0.1
@@ -4657,7 +4666,7 @@ __metadata:
     tar: ^6.1.11
   bin:
     pacote: lib/bin.js
-  checksum: bf5c43d51350a2ed5d407caa6ddffa9bb8fd7098f3d36600bd1f2dd40a76f5e78b27dd5c2828ae8c312b12888f3c1846385ffbcd1f2e0bd0e2e549f5d124cca4
+  checksum: 109388e873615cdad342f5dbd3639389c00aaac2c84b824dcb1a9460b4cf1c66264387b1d0200b1769abda7feca94165804d1308ca5e59904ae24d489d3bfb13
   languageName: node
   linkType: hard
 
@@ -6330,7 +6339,7 @@ __metadata:
     http-errors: ~2.0.0
     lodash: ^4.17.21
     morgan: ~1.10.0
-    npm-check-updates: ^16.7.4
+    npm-check-updates: ^16.7.10
     passport: ^0.6.0
     passport-local: ^1.0.0
     pg: ^8.8.0

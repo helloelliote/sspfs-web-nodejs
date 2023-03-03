@@ -12,7 +12,7 @@ const filterProperties = new Set([
   "devDependencies",
   "homepage",
   "license",
-  "scripts",
+  // "scripts",
 ]);
 
 /**
@@ -22,12 +22,6 @@ const filterProperties = new Set([
  * @see https://github.com/TypeStrong/ts-loader#transpileonly
  */
 const config = {
-  entry: {
-    app: "./bin/www.ts",
-  },
-  output: {
-    filename: "[name].bundle.js",
-  },
   cache: {
     type: "filesystem",
     buildDependencies: {
@@ -36,17 +30,11 @@ const config = {
       // By default webpack and loaders are build dependencies
     },
   },
-  node: {
-    // Need this when working with express, otherwise the build fails
-    __dirname: false, // if you don't put this is, __dirname
-    __filename: false, // and __filename return blank or /
+  entry: {
+    app: "./bin/www.ts",
   },
-  externalsPresets: { node: true }, // in order to ignore built-in modules like path, fs, etc.
-  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder,
-  resolve: {
-    symlinks: false,
-    extensions: [".tsx", ".ts", ".js"],
-  },
+  externals: [nodeExternals()],
+  externalsPresets: { node: true },
   module: {
     rules: [
       {
@@ -54,6 +42,14 @@ const config = {
         loader: "ts-loader",
       },
     ],
+  }, // in order to ignore built-in modules like path, fs, etc.
+  node: {
+    // Need this when working with express, otherwise the build fails
+    __dirname: false, // if you don't put this is, __dirname
+    __filename: false, // and __filename return blank or /
+  }, // in order to ignore all modules in node_modules folder,
+  output: {
+    filename: "[name].bundle.js",
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
@@ -80,12 +76,16 @@ const config = {
       },
     },
   ],
+  resolve: {
+    symlinks: false,
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  target: "node18",
   watch: true,
   watchOptions: {
     aggregateTimeout: 1000,
     ignored: ["**/public", "**/node_modules"],
   },
-  target: "node18",
 };
 
 /**

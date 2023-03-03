@@ -204,7 +204,7 @@ function getEntryFiles() {
 function mainConfig() {
   return {
     // enabled/disable optimizations
-    mode: args.indexOf("production") !== -1 ? "production" : "development",
+    mode: args.indexOf("prod") === 0 ? "production" : "development",
     // console logs output, https://webpack.js.org/configuration/stats/
     stats: "errors-warnings",
     /*ignoreWarnings: [{
@@ -360,7 +360,9 @@ function mainConfig() {
     },
     target: "browserslist", // NEW
     watchOptions: {
+      aggregateTimeout: 1000,
       ignored: ["**/.yarn", "**/node_modules", "**/webpack"], // NEW
+      poll: true,
     },
     cache: {
       // NEW

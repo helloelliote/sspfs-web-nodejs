@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "yarn node ./app.bundle.js",
-    "devServer": "yarn webpack --mode=development --config ./webpack.server.js",
-    "prodServer": "yarn webpack --mode=production --config ./webpack.server.js",
+    "start": "node ./app.bundle.js",
+    "build(server)": "webpack --mode=development",
+    "watch(server)": "webpack --mode=development --watch",
     "ncu": "ncu",
     "prettier": "prettier --write .",
     "stress": "artillery run ./.artilleryrc.yml",

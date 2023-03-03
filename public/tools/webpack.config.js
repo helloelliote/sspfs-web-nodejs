@@ -360,7 +360,7 @@ function mainConfig() {
     },
     target: "browserslist", // NEW
     watchOptions: {
-      ignored: /node_modules/, // NEW
+      ignored: ["**/.yarn", "**/node_modules", "**/webpack"], // NEW
     },
     cache: {
       // NEW

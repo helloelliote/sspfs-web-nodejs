@@ -3,7 +3,7 @@ import logger, { Options } from "morgan";
 
 const morganOptions: Options<Request, Response> = {
   skip: function (req: Request, res: Response) {
-    return req.path.includes("assets");
+    return /(assets|graphql)/.test(req.path);
   },
 };
 

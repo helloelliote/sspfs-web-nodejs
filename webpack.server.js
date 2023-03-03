@@ -80,8 +80,10 @@ const config = {
       },
     },
   ],
+  watch: true,
   watchOptions: {
-    ignored: /node_modules/,
+    aggregateTimeout: 1000,
+    ignored: ["**/public", "**/node_modules"],
   },
   target: "node18",
 };

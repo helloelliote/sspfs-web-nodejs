@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import user from "./user";
 import passport from "../middlewares/passport";
 
@@ -16,5 +16,9 @@ router.post(
 );
 router.post("/logout", user.logout);
 router.get("/signup", user.signup);
+
+router.get(/geoserver/, (req: Request, res: Response, next: NextFunction) => {
+  res.redirect(302, `http://${req.hostname}:8080${req.originalUrl}`);
+});
 
 export default router;

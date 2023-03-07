@@ -1,1 +1,3 @@
-export default {};
+// noinspection JSUnusedGlobalSymbols
+
+export { default as OlMap } from "./map";

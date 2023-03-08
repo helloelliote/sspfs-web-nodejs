@@ -37,7 +37,7 @@ export default class Vector extends Layer {
             const { image, stroke, text }: StyleProperty = style;
             //
             const line = new Style({ stroke, text });
-            text.setText(fac_nam);
+            text.setText(fac_nam.replaceAll("_", " "));
             styles.push(line.clone());
             //
             const arrow: Style = new Style({ image });
@@ -50,6 +50,14 @@ export default class Vector extends Layer {
             arrow.setGeometry(new Point([x1, y1]));
             arrow.getImage().setRotation(rotation);
             styles.push(arrow.clone());
+            break;
+          }
+          case "Point": {
+            const { image, text }: StyleProperty = style;
+            //
+            const point = new Style({ image, text });
+            text.setText(fac_nam.replaceAll("_", " "));
+            styles.push(point.clone());
             break;
           }
           default:

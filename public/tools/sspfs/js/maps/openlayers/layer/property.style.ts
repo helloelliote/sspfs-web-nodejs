@@ -1,12 +1,35 @@
-import { Fill, Icon, Stroke, Text } from "ol/style";
+import { Circle, Fill, Icon, Stroke, Text } from "ol/style";
 
 interface StyleProperty {
-  image?: Icon;
+  image?: Icon | Circle;
   stroke?: Stroke;
   text?: Text;
 }
 
 const styleProperties: Map<string, StyleProperty> = new Map([
+  [
+    "A",
+    {
+      image: new Circle({
+        radius: 6,
+        fill: new Fill({
+          color: "#ff0000",
+        }),
+        stroke: new Stroke({
+          color: "#ffffff",
+          width: 2,
+        }),
+      }),
+      text: new Text({
+        fill: new Fill({ color: "#ff0000" }),
+        font: "bold 0.9rem Noto Sans KR",
+        offsetY: 18,
+        overflow: true,
+        placement: "point",
+        stroke: new Stroke({ width: 2, color: "#ffffff" }),
+      }),
+    },
+  ],
   [
     "B",
     {
@@ -26,6 +49,52 @@ const styleProperties: Map<string, StyleProperty> = new Map([
         fill: new Fill({ color: "#0045ff" }),
         font: "bold 0.9rem Noto Sans KR",
         placement: "line",
+        stroke: new Stroke({ width: 2, color: "#ffffff" }),
+      }),
+    },
+  ],
+  [
+    "C",
+    {
+      image: new Circle({
+        radius: 5,
+        fill: new Fill({
+          color: "#ffff00",
+        }),
+        stroke: new Stroke({
+          color: "#ffffff",
+          width: 2,
+        }),
+      }),
+      text: new Text({
+        fill: new Fill({ color: "#ffff00" }),
+        font: "bold 0.9rem Noto Sans KR",
+        offsetY: 18,
+        overflow: true,
+        placement: "point",
+        stroke: new Stroke({ width: 2, color: "#ffffff" }),
+      }),
+    },
+  ],
+  [
+    "D",
+    {
+      image: new Circle({
+        radius: 5,
+        fill: new Fill({
+          color: "#ffff00",
+        }),
+        stroke: new Stroke({
+          color: "#ffffff",
+          width: 2,
+        }),
+      }),
+      text: new Text({
+        fill: new Fill({ color: "#ffff00" }),
+        font: "bold 0.9rem Noto Sans KR",
+        offsetY: 18,
+        overflow: true,
+        placement: "point",
         stroke: new Stroke({ width: 2, color: "#ffffff" }),
       }),
     },

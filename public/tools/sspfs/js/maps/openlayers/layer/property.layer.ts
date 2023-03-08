@@ -1,5 +1,3 @@
-import { Stroke, Style, Text } from "ol/style";
-
 interface LayerProperty {
   cql_filter: string;
   propertyName: string[];
@@ -33,26 +31,4 @@ const layerProperties: Map<string, LayerProperty> = new Map([
   ],
 ]);
 
-const text: Text = new Text({
-  font: "bold 0.9rem Noto Sans KR",
-  placement: "line",
-  stroke: new Stroke({
-    color: "#ffffff",
-    width: 3,
-  }),
-});
-
-const layerStyles: Map<string, Style> = new Map([
-  [
-    "B",
-    new Style({
-      stroke: new Stroke({
-        color: "#0045ff",
-        width: 1.5,
-      }),
-      text,
-    }),
-  ],
-]);
-
-export { LayerProperty, layerProperties, layerStyles };
+export { layerProperties, LayerProperty };

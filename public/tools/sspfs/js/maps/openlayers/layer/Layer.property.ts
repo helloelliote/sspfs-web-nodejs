@@ -1,40 +1,58 @@
+import { Stroke, Style, Text } from "ol/style";
+
 interface LayerProperty {
-  className: string;
   cql_filter: string;
   propertyName: string[];
   typeName: string;
 }
 
-interface StyleProperty {}
-
 const layerProperties: Map<string, LayerProperty> = new Map([
   [
     "ol-layer-vector-b",
     {
-      className: "ol-layer ol-layer-vector ol-layer-vector-b",
       cql_filter: "fac_typ='B'",
-      propertyName: ["fac_uid", "fac_nam", "geom"],
+      propertyName: ["fac_nam", "fac_typ", "fac_uid", "geom"],
       typeName: "sspfs47130:view_risk_evaluation_line",
     },
   ],
   [
     "ol-layer-vector-e",
     {
-      className: "ol-layer ol-layer-vector ol-layer-vector-e",
       cql_filter: "fac_typ='E'",
-      propertyName: ["fac_uid", "fac_nam", "geom"],
+      propertyName: ["fac_nam", "fac_typ", "fac_uid", "geom"],
       typeName: "sspfs47130:view_risk_evaluation_line",
     },
   ],
   [
     "ol-layer-vector-f",
     {
-      className: "ol-layer ol-layer-vector ol-layer-vector-f",
       cql_filter: "fac_typ='F'",
-      propertyName: ["fac_uid", "fac_nam", "geom"],
+      propertyName: ["fac_nam", "fac_typ", "fac_uid", "geom"],
       typeName: "sspfs47130:view_risk_evaluation_line",
     },
   ],
 ]);
 
-export { LayerProperty, layerProperties };
+const text: Text = new Text({
+  font: "bold 0.9rem Noto Sans KR",
+  placement: "line",
+  stroke: new Stroke({
+    color: "#ffffff",
+    width: 3,
+  }),
+});
+
+const layerStyles: Map<string, Style> = new Map([
+  [
+    "B",
+    new Style({
+      stroke: new Stroke({
+        color: "#0045ff",
+        width: 1.5,
+      }),
+      text,
+    }),
+  ],
+]);
+
+export { LayerProperty, layerProperties, layerStyles };

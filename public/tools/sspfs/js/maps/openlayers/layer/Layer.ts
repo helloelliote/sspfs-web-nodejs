@@ -1,13 +1,44 @@
 import { Layer as BaseLayer } from "ol/layer";
-import { layerProperties, LayerProperty } from "./Layer.property";
+import { FeatureLike } from "ol/Feature";
+import { Style } from "ol/style";
+import { createDefaultStyle } from "ol/style/Style";
+import { layerProperties, LayerProperty, layerStyles } from "./Layer.property";
 
 export default class Layer {
   readonly properties: Map<string, LayerProperty>;
+  readonly styles: Map<string, Style>;
+  styleCache: Map<string | number, Style>;
+  styleFunction: (feature: FeatureLike) => Style[];
   layerMap: Map<string, BaseLayer>;
 
   constructor() {
+    this.layerMap = new Map<string, BaseLayer>();
     this.properties = layerProperties;
-    this.layerMap = new Map([]);
+    this.styles = layerStyles;
+    this.styleCache = new Map<string | number, Style>();
+    this.styleFunction = (feature: FeatureLike): Style[] => {
+      const id = feature.getId();
+      if (this.styleCache.has(id)) {
+        return [this.styleCache.get(id)];
+      }
+      const { fac_nam, fac_typ } = feature.getProperties();
+      if (this.styles.has(fac_typ)) {
+        const style = this.styles.get(fac_typ);
+        switch (feature.getGeometry().getType()) {
+          case "LineString":
+          case "MultiLineString": {
+            style.getText().setText(fac_nam.replaceAll("_", " "));
+            break;
+          }
+          default: {
+            break;
+          }
+        }
+        this.styleCache.set(id, style.clone());
+        return [style];
+      }
+      return createDefaultStyle(feature, 0);
+    };
   }
 
   get layers(): IterableIterator<BaseLayer> {

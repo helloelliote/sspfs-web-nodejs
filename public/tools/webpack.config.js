@@ -360,7 +360,7 @@ function mainConfig() {
     },
     target: "browserslist", // NEW
     watchOptions: {
-      aggregateTimeout: 1000,
+      aggregateTimeout: 500,
       ignored: ["**/.yarn", "**/node_modules", "**/webpack"], // NEW
       poll: true,
     },

@@ -4850,6 +4850,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pg-pool@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "pg-pool@npm:3.6.0"
+  peerDependencies:
+    pg: ">=8.0"
+  checksum: f3fe050fbfe27406369340c4c26efcbe21a388ace085a876453de0ea496a315c38b2dc739ac97d4767a359e911da2ec4810467f72601eeec8ad540e58b27987c
+  languageName: node
+  linkType: hard
+
 "pg-protocol@npm:*, pg-protocol@npm:^1.6.0":
   version: 1.6.0
   resolution: "pg-protocol@npm:1.6.0"
@@ -4884,7 +4893,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg@npm:>=6.1.0 <9, pg@npm:^8.8.0, pg@npm:^8.9.0":
+"pg@npm:>=6.1.0 <9, pg@npm:^8.8.0":
   version: 8.9.0
   resolution: "pg@npm:8.9.0"
   dependencies:
@@ -4901,6 +4910,26 @@ __metadata:
     pg-native:
       optional: true
   checksum: dfd158955318f9ffb9428eaada29f3ee98b9eb07e87ed4b56589a19984d109f23bb8f88db78b7d7f870553e5b75ca0d58d0ed55755a8c6aed5df44e038c1d529
+  languageName: node
+  linkType: hard
+
+"pg@npm:^8.10.0":
+  version: 8.10.0
+  resolution: "pg@npm:8.10.0"
+  dependencies:
+    buffer-writer: 2.0.0
+    packet-reader: 1.0.0
+    pg-connection-string: ^2.5.0
+    pg-pool: ^3.6.0
+    pg-protocol: ^1.6.0
+    pg-types: ^2.1.0
+    pgpass: 1.x
+  peerDependencies:
+    pg-native: ">=3.0.1"
+  peerDependenciesMeta:
+    pg-native:
+      optional: true
+  checksum: c6be78f2e823f2ae3c618c8e54a6622592dd71b556fb665d7eaedcbcc2fa5d210a8bcf519401e72526a65b9d797f19b772f48f29b9d9f31e98dd526fd27d61e0
   languageName: node
   linkType: hard
 
@@ -6357,7 +6386,7 @@ __metadata:
     npm-check-updates: ^16.7.10
     passport: ^0.6.0
     passport-local: ^1.0.0
-    pg: ^8.9.0
+    pg: ^8.10.0
     postgraphile: ^4.13.0
     prettier: ^2.8.4
     serve-favicon: ^2.5.0

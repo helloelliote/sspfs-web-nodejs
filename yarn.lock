@@ -773,10 +773,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.14.2":
-  version: 18.14.2
-  resolution: "@types/node@npm:18.14.2"
-  checksum: 53c07e721f6ae33de71306f6a0b75dae6066a4f55bd5484c93bd59ff25f0c5f004ceafeef509a4d0cb9e24a247efc34d50489bcc1b05a53ecc68e2fc088e65cb
+"@types/node@npm:^20.8.3":
+  version: 20.8.3
+  resolution: "@types/node@npm:20.8.3"
+  checksum: bfb88b341faeb19f8fd37306a3bf433721b876c6491d10fcb0b13fd26601fa36ee45113dd82b1e1c23e3c957dff5b99f81a16493cefa03abe797e41a2487a4f7
   languageName: node
   linkType: hard
 
@@ -6325,7 +6325,7 @@ __metadata:
     "@types/http-errors": ^2.0.1
     "@types/lodash": ^4.14.191
     "@types/morgan": ^1.9.4
-    "@types/node": ^18.14.2
+    "@types/node": ^20.8.3
     "@types/passport": ^1.0.12
     "@types/passport-local": ^1.0.35
     "@types/pg": ^8.6.6

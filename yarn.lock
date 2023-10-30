@@ -773,10 +773,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.14.2":
-  version: 18.14.2
-  resolution: "@types/node@npm:18.14.2"
-  checksum: 53c07e721f6ae33de71306f6a0b75dae6066a4f55bd5484c93bd59ff25f0c5f004ceafeef509a4d0cb9e24a247efc34d50489bcc1b05a53ecc68e2fc088e65cb
+"@types/node@npm:^20.8.9":
+  version: 20.8.9
+  resolution: "@types/node@npm:20.8.9"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 0c05f3502a9507ff27e91dd6fd574fa6f391b3fafedcfe8e0c8d33351fb22d02c0121f854e5b6b3ecb9a8a468407ddf6e7ac0029fb236d4c7e1361ffc758a01f
   languageName: node
   linkType: hard
 
@@ -6147,6 +6149,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -6325,7 +6334,7 @@ __metadata:
     "@types/http-errors": ^2.0.1
     "@types/lodash": ^4.14.191
     "@types/morgan": ^1.9.4
-    "@types/node": ^18.14.2
+    "@types/node": ^20.8.9
     "@types/passport": ^1.0.12
     "@types/passport-local": ^1.0.35
     "@types/pg": ^8.6.6
